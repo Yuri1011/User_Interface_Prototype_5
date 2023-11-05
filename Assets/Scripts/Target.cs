@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Target : MonoBehaviour {
@@ -23,6 +24,12 @@ public class Target : MonoBehaviour {
     }
     Vector3 RandomSpawnPos() {
         return new Vector3(Random.Range(-rangeX, rangeX), -spawnPosY);
+    }
+    private void OnMouseDown() {
+        Destroy(gameObject);
+    }
+    private void OnTriggerEnter(Collider other) {
+        Destroy(gameObject);
     }
     void Update() {
         
