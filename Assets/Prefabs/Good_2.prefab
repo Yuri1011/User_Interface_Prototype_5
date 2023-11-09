@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 8963148261172766118}
   - component: {fileID: 59903975457460015}
   - component: {fileID: 733771456809922949}
-  - component: {fileID: 253140915927160722}
   - component: {fileID: 4191230678094289802}
+  - component: {fileID: 253140915927160722}
   m_Layer: 0
   m_Name: Good_2
   m_TagString: Untagged
@@ -107,19 +107,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.15480329
   m_Center: {x: 0, y: 0.14754717, z: 0}
---- !u!114 &253140915927160722
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8178452684117161718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a22a2235d95bf644ab70d44b58fee957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pointValue: 2
 --- !u!54 &4191230678094289802
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -147,3 +134,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &253140915927160722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8178452684117161718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a22a2235d95bf644ab70d44b58fee957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointValue: 2
+  explosionParticle: {fileID: 5068690487242682094, guid: 55eaf2f79b2cb3244be7113ee73d5e57, type: 3}
