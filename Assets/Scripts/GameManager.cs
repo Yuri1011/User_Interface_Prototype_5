@@ -10,8 +10,7 @@ public class GameManager : MonoBehaviour {
     public TextMeshProUGUI scoreText;
     void Start() {
         StartCoroutine(SpawnTarget());
-        score = 0;
-        scoreText.text = "Scorer: " + score;
+        UpdateScore(0);
     }
     IEnumerator SpawnTarget() {
         while (true) {
@@ -20,7 +19,11 @@ public class GameManager : MonoBehaviour {
             Instantiate(targets[index]);
         }
     }
+
+    public void UpdateScore(int scoreToAdd) {
+        score += scoreToAdd;
+        scoreText.text = "Score: " + score;
+    }
     void Update(){
-        
     }
 }

@@ -10,11 +10,13 @@ public class Target : MonoBehaviour {
     private float maxTorque = 10.0f;
     private float rangeX = 4.0f;
     private float spawnPosY = 3.0f;
+    private GameManager gameManager;
     void Start() {
         targetRb = GetComponent<Rigidbody>();
         targetRb.AddForce(RandomForce(), ForceMode.Impulse);
         targetRb.AddTorque(RandomTorque(), RandomTorque(), RandomTorque(), ForceMode.Impulse);
         transform.position = RandomSpawnPos();
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
     Vector3 RandomForce() {
         return Vector3.up * Random.Range(minSpeed, maxSpeed);
@@ -26,6 +28,7 @@ public class Target : MonoBehaviour {
         return new Vector3(Random.Range(-rangeX, rangeX), -spawnPosY);
     }
     private void OnMouseDown() {
+        gameManager.UpdateScore(5);
         Destroy(gameObject);
     }
     private void OnTriggerEnter(Collider other) {
