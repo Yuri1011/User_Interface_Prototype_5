@@ -37,7 +37,10 @@ public class Target : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         Destroy(gameObject);
     }
+
     void Update() {
-        
+        if(gameManager.score == 57 || gameManager.gameOverText.gameObject.activeSelf) {
+            Destroy(gameObject);
+        }
     }
 }
