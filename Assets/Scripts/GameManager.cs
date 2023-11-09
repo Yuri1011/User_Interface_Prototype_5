@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
     public List<GameObject> targets;
@@ -13,6 +15,7 @@ public class GameManager : MonoBehaviour {
     public TextMeshProUGUI gameWinText;
     private float timePassed;
     private bool timerRunning = true;
+    public Button restartButton;
     void Start() {
         StartCoroutine(SpawnTarget());
         UpdateScore(0);
@@ -36,9 +39,11 @@ public class GameManager : MonoBehaviour {
                 // Когда время закончится, активируйте текст окончания игры
                 gameOverText.gameObject.SetActive(true);
                 timerRunning = false; // Останавливаем таймер
+                restartButton.gameObject.SetActive(true);
             } else if (score == 57) {
                 gameWinText.gameObject.SetActive(true);
                 timerRunning = false; // Останавливаем таймер
+                restartButton.gameObject.SetActive(true);
             }
         }
     }
@@ -46,6 +51,10 @@ public class GameManager : MonoBehaviour {
     public void UpdateScore(int scoreToAdd) {
         score += scoreToAdd;
         scoreText.text = "Score: " + score;
+    }
+
+    public void RestartGame() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     void Update(){
     }
