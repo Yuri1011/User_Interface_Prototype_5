@@ -11,6 +11,7 @@ public class Target : MonoBehaviour {
     private float rangeX = 4.0f;
     private float spawnPosY = 3.0f;
     private GameManager gameManager;
+    public int pointValue;
     void Start() {
         targetRb = GetComponent<Rigidbody>();
         targetRb.AddForce(RandomForce(), ForceMode.Impulse);
@@ -28,8 +29,8 @@ public class Target : MonoBehaviour {
         return new Vector3(Random.Range(-rangeX, rangeX), -spawnPosY);
     }
     private void OnMouseDown() {
-        gameManager.UpdateScore(5);
         Destroy(gameObject);
+        gameManager.UpdateScore(pointValue);
     }
     private void OnTriggerEnter(Collider other) {
         Destroy(gameObject);
