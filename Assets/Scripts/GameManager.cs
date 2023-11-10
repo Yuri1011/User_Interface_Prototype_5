@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
     public List<GameObject> targets;
-    private float spawnRate = 1.0f;
+    private float spawnRate;
     public int score;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI gameOverText;
@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour {
     private bool timerRunning = true;
     public Button restartButton;
     public GameObject titleScreen;
-    private int finalScore = 77;
+    public int finalScore = 77;
     void Start() {
 
     }
@@ -57,21 +57,26 @@ public class GameManager : MonoBehaviour {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void StarGame(int difficulty) {
+    public void StartGame(int difficulty) {
         switch (difficulty) {
             case 1:
                 timePassed = 50.0f;
+                spawnRate = 1.0f;
                 break;
             case 2:
                 timePassed = 60.0f;
+                spawnRate = 0.5f;
                 break;
             case 3:
+                foreach (GameObject target in targets) {
+                    target.GetComponent<Target>().minSpeed = 16.0f;
+                }
                 timePassed = 70.0f;
+                spawnRate = 0.5f;
                 break;
         }
         
         titleScreen.gameObject.SetActive(false);
-        spawnRate /= difficulty;
         StartCoroutine(SpawnTarget());
         UpdateScore(0);
         StartCoroutine(StartTimer());

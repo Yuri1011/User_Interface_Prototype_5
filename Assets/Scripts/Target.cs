@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Target : MonoBehaviour {
     private Rigidbody targetRb;
-    private float minSpeed = 14.0f;
+    public float minSpeed = 14.0f;
     private float maxSpeed = 17.0f;
     private float maxTorque = 10.0f;
     private float rangeX = 4.0f;
@@ -39,7 +39,7 @@ public class Target : MonoBehaviour {
     }
 
     void Update() {
-        if(gameManager.score == 77 || gameManager.gameOverText.gameObject.activeSelf) {
+        if(gameManager.score == gameManager.finalScore || gameManager.gameOverText.gameObject.activeSelf) {
             Destroy(gameObject);
         }
     }
