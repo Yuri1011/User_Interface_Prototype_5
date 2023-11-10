@@ -18,8 +18,10 @@ public class GameManager : MonoBehaviour {
     public Button restartButton;
     public GameObject titleScreen;
     public int finalScore = 77;
+    private GameObject backgroundAudio;
     void Start() {
-
+        backgroundAudio = GameObject.Find("BackgroundMusic");
+        backgroundAudio.GetComponent<AudioSource>();
     }
     IEnumerator SpawnTarget() {
         while (true) {
@@ -38,10 +40,12 @@ public class GameManager : MonoBehaviour {
             if (timePassed == 0f && score != finalScore) {
                 // Когда время закончится, активируйте текст окончания игры
                 gameOverText.gameObject.SetActive(true);
+                backgroundAudio.SetActive(false);
                 timerRunning = false; // Останавливаем таймер
                 restartButton.gameObject.SetActive(true);
             } else if (score == finalScore) {
                 gameWinText.gameObject.SetActive(true);
+                backgroundAudio.SetActive(false);
                 timerRunning = false; // Останавливаем таймер
                 restartButton.gameObject.SetActive(true);
             }
@@ -61,17 +65,17 @@ public class GameManager : MonoBehaviour {
         switch (difficulty) {
             case 1:
                 timePassed = 50.0f;
-                spawnRate = 1.0f;
+                spawnRate = 1.5f;
                 break;
             case 2:
-                timePassed = 60.0f;
-                spawnRate = 0.5f;
+                timePassed = 65.0f;
+                spawnRate = 1.0f;
                 break;
             case 3:
                 foreach (GameObject target in targets) {
-                    target.GetComponent<Target>().minSpeed = 16.0f;
+                    target.GetComponent<Target>().minSpeed = 17.0f;
                 }
-                timePassed = 70.0f;
+                timePassed = 80.0f;
                 spawnRate = 0.5f;
                 break;
         }

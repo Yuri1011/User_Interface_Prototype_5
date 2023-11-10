@@ -1802,7 +1802,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8ddf75981912f424e92cccb63e54e80f, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2090,6 +2090,7 @@ MonoBehaviour:
   gameWinText: {fileID: 914559284}
   restartButton: {fileID: 1424438551}
   titleScreen: {fileID: 1698245234}
+  finalScore: 77
 --- !u!1 &1593149578
 GameObject:
   m_ObjectHideFlags: 0
