@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
     public List<GameObject> targets;
-    private float spawnRate;
+    private float spawnRate = 1.0f;
     public int score;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI gameOverText;
@@ -17,9 +17,12 @@ public class GameManager : MonoBehaviour {
     private bool timerRunning = true;
     public Button restartButton;
     public GameObject titleScreen;
+    public GameObject quitGame;
     public int finalScore = 77;
     private GameObject backgroundAudio;
+    private bool isQuitGameBTN = true;
     void Start() {
+        quitGame = GameObject.Find("QuitGameButton");
         backgroundAudio = GameObject.Find("BackgroundMusic");
         backgroundAudio.GetComponent<AudioSource>();
     }
@@ -65,21 +68,15 @@ public class GameManager : MonoBehaviour {
         switch (difficulty) {
             case 1:
                 timePassed = 50.0f;
-                spawnRate = 1.5f;
                 break;
             case 2:
-                timePassed = 65.0f;
-                spawnRate = 1.0f;
+                timePassed = 60.0f;
                 break;
             case 3:
-                foreach (GameObject target in targets) {
-                    target.GetComponent<Target>().minSpeed = 17.0f;
-                }
                 timePassed = 80.0f;
-                spawnRate = 0.5f;
                 break;
         }
-        
+        quitGame.SetActive(false);
         titleScreen.gameObject.SetActive(false);
         StartCoroutine(SpawnTarget());
         UpdateScore(0);
@@ -87,5 +84,14 @@ public class GameManager : MonoBehaviour {
     }
 
     void Update(){
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            if (isQuitGameBTN) {
+                quitGame.SetActive(true);
+                isQuitGameBTN = false;
+            }else{
+                isQuitGameBTN = true;
+                quitGame.SetActive(false);
+            }
+        }
     }
 }
