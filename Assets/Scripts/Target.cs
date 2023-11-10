@@ -39,7 +39,7 @@ public class Target : MonoBehaviour {
     }
 
     void Update() {
-        if(gameManager.score == 57 || gameManager.gameOverText.gameObject.activeSelf) {
+        if(gameManager.score == 77 || gameManager.gameOverText.gameObject.activeSelf) {
             Destroy(gameObject);
         }
     }

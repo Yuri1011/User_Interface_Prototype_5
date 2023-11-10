@@ -17,9 +17,7 @@ public class GameManager : MonoBehaviour {
     private bool timerRunning = true;
     public Button restartButton;
     void Start() {
-        StartCoroutine(SpawnTarget());
-        UpdateScore(0);
-        StartCoroutine(StartTimer());
+
     }
     IEnumerator SpawnTarget() {
         while (true) {
@@ -35,12 +33,12 @@ public class GameManager : MonoBehaviour {
             timePassed++;
             // Обновление текста на экране с отображением времени
             timeText.text = "Time: " + timePassed.ToString("F0") + "s";
-            if (timePassed >= 60f && score != 57) {
+            if (timePassed >= 60f && score != 77) {
                 // Когда время закончится, активируйте текст окончания игры
                 gameOverText.gameObject.SetActive(true);
                 timerRunning = false; // Останавливаем таймер
                 restartButton.gameObject.SetActive(true);
-            } else if (score == 57) {
+            } else if (score == 77) {
                 gameWinText.gameObject.SetActive(true);
                 timerRunning = false; // Останавливаем таймер
                 restartButton.gameObject.SetActive(true);
@@ -56,6 +54,13 @@ public class GameManager : MonoBehaviour {
     public void RestartGame() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+    public void StarGame() {
+        StartCoroutine(SpawnTarget());
+        UpdateScore(0);
+        StartCoroutine(StartTimer());
+    }
+    
     void Update(){
     }
 }
